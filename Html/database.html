@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familio - База знаний</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="database.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="main_page.html">Family Tree</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="create-tree.html">Древо</a></li>
+                            <li class="nav-item"><a class="nav-link" href="surname.html">Фамилии</a></li>
+                            <li class="nav-item"><a class="nav-link" href="location.html">Места</a></li>
+                            <li class="nav-item"><a class="nav-link" href="people.html">Люди</a></li>
+                            <li class="nav-item"><a class="nav-link" href="database.html">База знаний</a></li>
+                        </ul>
+                <a href="#" class="btn btn-outline-primary"><i class="bi bi-box-arrow-in-right"></i> Вход</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="container my-5">
+        <div class="knowledge-base-header">
+            <h1><i class="bi bi-book"></i> База знаний</h1>
+            <p class="lead">Обширная коллекция архивных документов и справочников</p>
+        </div>
+
+        <div class="database-cards">
+            <!-- Карточка архивных документов -->
+            <div class="database-card" id="archiveDocuments">
+                <div class="card-header">
+                    <h2><i class="bi bi-archive"></i> Архивные документы</h2>
+                    <span class="badge bg-primary">396 425 записей</span>
+                </div>
+                <div class="card-body">
+                    <p>База данных исторических документов, от ревизских сказок до дел о взыскании долговых денег. Документы связаны со страницами людей и населенными пунктами, что открывает новые возможности генеалогического поиска.</p>
+                    <div class="search-box">
+                        <input type="text" class="form-control" placeholder="Поиск по документам...">
+                        <button class="btn btn-primary search-btn"><i class="bi bi-search"></i> Найти</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка справочников -->
+            <div class="database-card" id="referenceBooks">
+                <div class="card-header">
+                    <h2><i class="bi bi-journal-text"></i> Справочники</h2>
+                    <span class="badge bg-primary">14 545 424 записей</span>
+                </div>
+                <div class="card-body">
+                    <p>База справочников, где можно найти данные о населенных пунктах или приходах из базы данных Familio, списки жителей городов или книги памяти.</p>
+                    <div class="search-box">
+                        <input type="text" class="form-control" placeholder="Поиск по справочникам...">
+                        <button class="btn btn-primary search-btn"><i class="bi bi-search"></i> Найти</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--чик пук пук -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Familio</h5>
+                    <p>Сервис для создания и исследования генеалогических древ.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">О нас</a></li>
+                        <li><a href="#" class="text-white">Тарифы</a></li>
+                        <li><a href="#" class="text-white">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Помощь</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">FAQ</a></li>
+                        <li><a href="#" class="text-white">Контакты</a></li>
+                        <li><a href="#" class="text-white">Поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Подписаться</h5>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <button class="btn btn-primary" type="button">OK</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary">
+                <p>Copyright© 2025 Family Tree</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="database.js"></script>
+</body>
+</html>

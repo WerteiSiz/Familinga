@@ -1,0 +1,83 @@
+/* Навигация */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+/* Основной контент */
+.container {
+    margin-top: 80px;
+}
+
+.profile-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profile-name {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.profile-email {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.profile-section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.profile-section h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-section h4 i {
+    margin-right: 10px;
+}
+
+.profile-info p,
+.additional-info p {
+    margin-bottom: 10px;
+}
+
+.education-item,
+.profession-item,
+.residence-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.education-item h5,
+.profession-item h5,
+.residence-item h5 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}

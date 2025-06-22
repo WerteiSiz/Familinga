@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Древо семьи - Места</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="location.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="main_page.html">family tree</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="create-tree.html">Древо</a></li>
+                            <li class="nav-item"><a class="nav-link" href="surname.html">Фамилии</a></li>
+                            <li class="nav-item"><a class="nav-link" href="location.html">Места</a></li>
+                            <li class="nav-item"><a class="nav-link" href="people.html">Люди</a></li>
+                            <li class="nav-item"><a class="nav-link" href="database.html">База знаний</a></li>
+                        </ul>
+                <a href="#" class="btn btn-outline-primary"><i class="bi bi-box-arrow-in-right"></i> Вход</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="container my-5">
+        <div class="places-header">
+            <h1><i class="bi bi-geo-alt"></i> Места</h1>
+            <p class="lead">Изучайте географию вашей семьи</p>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <div class="places-sidebar">
+                    <h3>Населенные пункты</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> Города и села</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-building"></i> Поселения</a>
+                        </li>
+                    </ul>
+
+                    <div class="search-places mt-4">
+                        <h4>Поиск по населенным пунктам</h4>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Название места">
+                            <button class="btn btn-primary" type="button">Найти</button>
+                        </div>
+                    </div>
+
+                    <div class="where-to-search mt-5">
+                        <h4>Где искать</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="bi bi-file-text"></i> Государственные архивы</a></li>
+                            <li><a href="#"><i class="bi bi-church"></i> Церковные записи</a></li>
+                            <li><a href="#"><i class="bi bi-map"></i> Исторические карты</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="places-map-container">
+                    <div id="map" style="width: 100%; height: 500px;"></div>
+                    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+                    <script>
+                        ymaps.ready(init);
+                        function init() {
+                            var map = new ymaps.Map("map", {
+                                center: [55.76, 37.64],
+                                zoom: 10
+                            });
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--чик пук пук -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Familio</h5>
+                    <p>Сервис для создания и исследования генеалогических древ.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">О нас</a></li>
+                        <li><a href="#" class="text-white">Тарифы</a></li>
+                        <li><a href="#" class="text-white">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Помощь</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">FAQ</a></li>
+                        <li><a href="#" class="text-white">Контакты</a></li>
+                        <li><a href="#" class="text-white">Поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Подписаться</h5>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <button class="btn btn-primary" type="button">OK</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary">
+                <p>Copyright© 2025 Family Tree</p>
+            </div>
+        </div>
+    </footer>

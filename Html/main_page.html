@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree - Ваше генеалогическое древо</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1400/1400475.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация по сайту-->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="main_page.html">Family Tree</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="create-tree.html">Древо</a></li>
+                            <li class="nav-item"><a class="nav-link" href="surname.html">Фамилии</a></li>
+                            <li class="nav-item"><a class="nav-link" href="location.html">Места</a></li>
+                            <li class="nav-item"><a class="nav-link" href="people.html">Люди</a></li>
+                            <li class="nav-item"><a class="nav-link" href="database.html">База знаний</a></li>
+                        </ul>
+                <a href="#" class="btn btn-outline-primary"><i class="bi bi-box-arrow-in-right"></i> Вход</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main>
+        <!-- Герой-блок с анимацией -->
+        <!-- Герой-блок с фоновым изображением -->
+        <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="animate__animated animate__fadeInDown">Узнайте свое происхождение и составьте историю рода</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">Мы помогаем сохранять память о людях, искать информацию о родственниках и делиться исследованиями.</p>
+                <div class="hero-buttons mt-4">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registrationModal">Зарегистрироваться</button>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Войти</button>
+                </div>
+                <div class="tree">
+                    <img src="https://th.bing.com/th/id/OIP.5amoo1ZA9F1oZLam97XY1wHaHa?rs=1&pid=ImgDetMain" alt="Генеалогическое древо" class="col-md-6" style="border-radius: 10px; margin: 10px;">
+            </div>
+        </div>
+        </section>
+
+        <!-- Блок "Древо" из скриншотов -->
+        <section class="family-tree py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2><i class="bi bi-diagram-3"></i> Создайте генеалогическое древо бесплатно</h2>
+                <p>Сразу после регистрации вы сможете:</p>
+                <ul class="features-list">
+                <li><i class="bi bi-check-circle"></i> Создать родословное древо</li>
+                <li><i class="bi bi-check-circle"></i> Добавлять родственников</li>
+                <li><i class="bi bi-check-circle"></i> Вводить имена, даты и места</li>
+                <li><i class="bi bi-check-circle"></i> Загружать фотографии</li>
+                </ul>
+                <div class="mt-4">
+                <a href="#" class="btn btn-primary me-2">Начать сейчас</a>
+                <a href="#" class="btn btn-outline-primary">Пример древа</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="tree-preview">
+                <img src="https://static.tildacdn.com/tild3661-3066-4030-a236-643063663561/image.png" alt="Пример древа" class="img-fluid rounded shadow">
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Блок "Архивные документы" из скриншотов -->
+        <section class="documents py-5">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="bi bi-archive"></i> Архивные документы</h2>
+            <div class="document-features">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                <div class="document-card">
+                    <i class="bi bi-file-text"></i>
+                    <h3>Фамилии</h3>
+                    <p>Исследуйте историю своей фамилии</p>
+                </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                <div class="document-card">
+                    <i class="bi bi-geo-alt"></i>
+                    <h3>Места</h3>
+                    <p>Найдите места, связанные с вашей семьёй</p>
+                </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                <div class="document-card">
+                    <i class="bi bi-people"></i>
+                    <h3>Люди</h3>
+                    <p>Найдите информацию о предках</p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+        <!-- Карусель возможностей -->
+        <section class="features py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Наши возможности</h2>
+                <div id="featuresCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="card feature-card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-people-fill feature-icon"></i>
+                                            <h3 class="card-title">Люди</h3>
+                                            <p class="card-text">Находите информацию о своих предках и родственниках</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="card feature-card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-geo-alt-fill feature-icon"></i>
+                                            <h3 class="card-title">Места</h3>
+                                            <p class="card-text">Исследуйте географию вашей семьи</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="card feature-card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-journal-text feature-icon"></i>
+                                            <h3 class="card-title">Фамилии</h3>
+                                            <p class="card-text">Узнайте историю и распространение вашей фамилии</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#featuresCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- FAQ с аккордеоном -->
+        <section class="faq py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Часто задаваемые вопросы</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Это бесплатно?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Да, базовые функции создания и ведения генеалогического древа полностью бесплатны.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Я могу создать страницу любого человека?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Да, вы можете добавлять информацию о любых людях, связанных с вашей семьей.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Как хранятся данные?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Все данные хранятся на защищенных серверах с соблюдением политики конфиденциальности.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--чик пук пук -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Familio</h5>
+                    <p>Сервис для создания и исследования генеалогических древ.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">О нас</a></li>
+                        <li><a href="#" class="text-white">Тарифы</a></li>
+                        <li><a href="#" class="text-white">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Помощь</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">FAQ</a></li>
+                        <li><a href="#" class="text-white">Контакты</a></li>
+                        <li><a href="#" class="text-white">Поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Подписаться</h5>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <button class="btn btn-primary" type="button">OK</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary">
+                <p>Copyright© 2025 Family Tree</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="registrationModalLabel">Регистрация</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                <label for="firstName" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="col-md-6">
+                <label for="lastName" class="form-label">Фамилия</label>
+                <input type="text" class="form-control" id="lastName" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Пол</label>
+                <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" checked>
+                    <label class="form-check-label" for="male">М</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female">
+                    <label class="form-check-label" for="female">Ж</label>
+                </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Почта</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Пароль</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="terms" required>
+                <label class="form-check-label" for="terms">Согласен с условиями Пользовательского соглашения и Политики конфиденциальности</label>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="dataProcessing">
+                <label class="form-check-label" for="dataProcessing">Согласен с условиями Распределения персональных данных</label>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <p class="mb-0">Уже зарегистрированы? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Войти</a></p>
+        </div>
+        </div>
+    </div>
+    </div>
+    <!-- Модальное окно входа -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Почта</label>
+                <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Пароль</label>
+                <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Запомнить меня</label>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </div>
+            <div class="text-center">
+                <a href="#" class="text-decoration-none">Забыли пароль?</a>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <p class="mb-0">Ещё нет аккаунта? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registrationModal">Зарегистрироваться</a></p>
+        </div>
+        </div>
+    </div>
+    </div>
+    <!-- Bootstrap JS + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя | Familio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="main_page.html">Family Tree</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="drevo.html">Древо</a></li>
+                    <li class="nav-item"><a class="nav-link" href="surname.html">Фамилии</a></li>
+                    <li class="nav-item"><a class="nav-link" href="location.html">Места</a></li>
+                    <li class="nav-item"><a class="nav-link" href="people.html">Люди</a></li>
+                    <li class="nav-item"><a class="nav-link" href="database.html">База знаний</a></li>
+                </ul>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <img src="images/user-avatar.jpg" alt="Profile" class="user-avatar me-2">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="profile.html">Мой профиль</a></li>
+                        <li><a class="dropdown-item" href="settings.html">Настройки</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logoutBtn">Выйти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-card text-center">
+                    <img src="images/user-avatar.jpg" alt="Profile" class="profile-avatar mb-3">
+                    <h4 class="profile-name">Иван Иванов</h4>
+                    <p class="profile-email">ivan@example.com</p>
+                    <a href="drevo.html" class="btn btn-primary w-100 mb-3">
+                        <i class="bi bi-diagram-3"></i> Мое дерево
+                    </a>
+                    <a href="edit-profile.html" class="btn btn-outline-primary w-100">
+                        <i class="bi bi-pencil"></i> Редактировать
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-section">
+                    <h4><i class="bi bi-info-circle"></i> Основная информация</h4>
+                    <div class="profile-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Фамилия:</strong> Иванов</p>
+                                <p><strong>Фамилия до замужества:</strong> -</p>
+                                <p><strong>Имя:</strong> Иван</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Отчество:</strong> Иванович</p>
+                                <p><strong>Дата рождения:</strong> 15.03.1985</p>
+                                <p><strong>Национальность:</strong> Русский</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h4><i class="bi bi-book"></i> Образование</h4>
+                    <div class="education-list">
+                        <div class="education-item">
+                            <h5>МГУ им. Ломоносова</h5>
+                            <p class="text-muted">2003-2008, Факультет вычислительной математики и кибернетики</p>
+                        </div>
+                        <div class="education-item">
+                            <h5>Школа №123</h5>
+                            <p class="text-muted">1992-2003</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h4><i class="bi bi-briefcase"></i> Профессии</h4>
+                    <div class="profession-list">
+                        <div class="profession-item">
+                            <h5>Ведущий разработчик</h5>
+                            <p class="text-muted">Яндекс, 2015-н.в.</p>
+                        </div>
+                        <div class="profession-item">
+                            <h5>Инженер-программист</h5>
+                            <p class="text-muted">Ростелеком, 2008-2015</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h4><i class="bi bi-geo-alt"></i> Места жительства</h4>
+                    <div class="residence-list">
+                        <div class="residence-item">
+                            <h5>Москва</h5>
+                            <p class="text-muted">ул. Ленина, д. 15, кв. 34 (2010-н.в.)</p>
+                        </div>
+                        <div class="residence-item">
+                            <h5>Санкт-Петербург</h5>
+                            <p class="text-muted">ул. Невский проспект, д. 28 (2005-2010)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h4><i class="bi bi-file-text"></i> Дополнительная информация</h4>
+                    <div class="additional-info">
+                        <p><strong>Источник сведений:</strong> Личные документы</p>
+                        <p><strong>Комментарии:</strong> Родился в Москве, женат, двое детей. Увлекаюсь генеалогией с 2010 года.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

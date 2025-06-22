@@ -1,0 +1,219 @@
+:root {
+    --primary-color: #29319E;
+    --secondary-color: #CEE1ED;
+    --background-color: #F7FFFF;
+    --text-color: #333;
+    --light-text: #fff;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Навигация */
+.navbar {
+    background-color: var(--background-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--primary-color) !important;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    padding: 8px 15px !important;
+    margin: 0 3px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}
+
+.nav-link i {
+    margin-right: 5px;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+/* Поиск людей */
+.search-people-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-people-container h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.search-form .form-label {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.search-form .form-control {
+    border: 1px solid var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.search-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(41, 49, 158, 0.15);
+}
+
+.search-btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.search-btn:hover {
+    background-color: #1a237e;
+    border-color: #1a237e;
+}
+
+.advanced-search-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.advanced-search-link:hover {
+    text-decoration: underline;
+}
+
+.advanced-search-link i {
+    font-size: 0.8rem;
+}
+
+/* Новые люди */
+.new-people-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.new-people-section h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.people-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.person-card {
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.person-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.person-card h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.person-info {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Подвал */
+.footer {
+    background-color: var(--primary-color);
+    color: #212529;
+    padding: 30px 0 20px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-links li {
+    margin-bottom: 0;
+}
+
+.footer-links a {
+    color: var(--light-text) !important;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.copyright {
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .search-form .row > div {
+        margin-bottom: 15px;
+    }
+    
+    .search-form .row > div:last-child {
+        margin-bottom: 0;
+    }
+    
+    .people-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .copyright {
+        text-align: left !important;
+    }
+}

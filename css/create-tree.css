@@ -1,0 +1,61 @@
+/* Анимации */
+.animate__animated {
+    animation-duration: 0.5s;
+}
+
+/* Кнопка "Начать сейчас" на главной */
+.start-btn {
+    transition: all 0.3s;
+}
+.navbar {
+    z-index: 1040;
+}
+.start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(41, 49, 158, 0.3);
+}
+
+/* Анимация карточек */
+.feature-card, .person-card, .document-card {
+    transition: all 0.3s;
+}
+
+.feature-card:hover, .person-card:hover, .document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Анимация загрузки */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+.node-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.node-form > div {
+    background: white;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 800px;
+    position: relative;
+}
+.container.my-5 {
+    margin-top: 80px !important; /* Добавляем отступ сверху */
+}

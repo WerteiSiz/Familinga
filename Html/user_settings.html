@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки пользователя - Family Tree</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/user-settings.css">
+</head>
+<body>
+    <!-- Навигация по сайту-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="main_page.html">Family Tree</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="create-tree.html">Древо</a></li>
+                    <li class="nav-item"><a class="nav-link" href="surname.html">Фамилии</a></li>
+                    <li class="nav-item"><a class="nav-link" href="location.html">Места</a></li>
+                    <li class="nav-item"><a class="nav-link" href="people.html">Люди</a></li>
+                    <li class="nav-item"><a class="nav-link" href="database.html">База знаний</a></li>
+                </ul>
+                <div class="dropdown">
+                    <a href="#" class="btn btn-outline-primary dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i> Аккаунт
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="user-settings.html">Настройки</a></li>
+                        <li><a class="dropdown-item" href="#">Выйти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <div class="user-settings-container">
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/120" alt="Фото профиля" class="profile-photo" id="profilePhoto">
+                <div class="profile-info">
+                    <h2 id="userName">Иванов Иван Иванович</h2>
+                    <p id="userEmail">ivanov@example.com</p>
+                    <p id="userBirthdate">Дата рождения: 15.05.1985</p>
+                </div>
+            </div>
+            
+            <ul class="nav nav-pills mb-4" id="settingsTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="basic-tab" data-bs-toggle="pill" data-bs-target="#basic" type="button" role="tab">Основные данные</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="education-tab" data-bs-toggle="pill" data-bs-target="#education" type="button" role="tab">Образование</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profession-tab" data-bs-toggle="pill" data-bs-target="#profession" type="button" role="tab">Профессии</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="residence-tab" data-bs-toggle="pill" data-bs-target="#residence" type="button" role="tab">Места жительства</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="settingsTabsContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                    <form>
+                        <div class="form-section">
+                            <h3>Основная информация</h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nickname" class="form-label">Ник</label>
+                                    <input type="text" class="form-control" id="nickname">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Почта</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="password" class="form-label">Пароль</label>
+                                    <input type="password" class="form-control" id="password">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="photo" class="form-label">Фото</label>
+                                    <input type="file" class="form-control" id="photo" accept="image/*">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Личные данные</h3>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="lastName" class="form-label">Фамилия</label>
+                                    <input type="text" class="form-control" id="lastName">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="maidenName" class="form-label">Фамилия до замужества (для женщин)</label>
+                                    <input type="text" class="form-control" id="maidenName">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="firstName" class="form-label">Имя</label>
+                                    <input type="text" class="form-control" id="firstName">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="middleName" class="form-label">Отчество</label>
+                                    <input type="text" class="form-control" id="middleName">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="birthDate" class="form-label">Дата рождения (год-месяц-день)</label>
+                                    <input type="date" class="form-control" id="birthDate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nationality" class="form-label">Национальность</label>
+                                    <input type="text" class="form-control" id="nationality">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="socialStatus" class="form-label">Социальный статус</label>
+                                    <select class="form-select" id="socialStatus">
+                                        <option value="">Выберите статус</option>
+                                        <option value="student">Учащийся/Студент</option>
+                                        <option value="employed">Работающий</option>
+                                        <option value="unemployed">Безработный</option>
+                                        <option value="retired">Пенсионер</option>
+                                        <option value="disabled">Инвалид</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Дополнительная информация</h3>
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Комментарий (подробности жизни)</label>
+                                <textarea class="form-control" id="comment" rows="4"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="source" class="form-label">Как получены сведения</label>
+                                <input type="text" class="form-control" id="source" placeholder="Укажите источник информации">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        <a href="create-tree.html" class="btn btn-view-tree">
+                            <i class="bi bi-diagram-3"></i> Посмотреть мое дерево
+                        </a>
+                    </form>
+                </div>
+                
+                <div class="tab-pane fade" id="education" role="tabpanel">
+                    <form>
+                        <div id="educationItems">
+                            <div class="education-item">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="education1" class="form-label">Учебное заведение</label>
+                                        <input type="text" class="form-control" id="education1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="educationYearFrom1" class="form-label">Год начала</label>
+                                        <input type="number" class="form-control" id="educationYearFrom1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="educationYearTo1" class="form-label">Год окончания</label>
+                                        <input type="number" class="form-control" id="educationYearTo1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="educationSpecialty1" class="form-label">Специальность</label>
+                                        <input type="text" class="form-control" id="educationSpecialty1">
+                                    </div>
+                                </div>
+                                <span class="remove-item"><i class="bi bi-trash"></i></span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-outline-primary add-item-btn" id="addEducation">
+                            <i class="bi bi-plus-circle"></i> Добавить образование
+                        </button>
+                        
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="tab-pane fade" id="profession" role="tabpanel">
+                    <form>
+                        <div id="professionItems">
+                            <div class="profession-item">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="profession1" class="form-label">Профессия</label>
+                                        <input type="text" class="form-control" id="profession1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="professionYearFrom1" class="form-label">Год начала</label>
+                                        <input type="number" class="form-control" id="professionYearFrom1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="professionYearTo1" class="form-label">Год окончания</label>
+                                        <input type="number" class="form-control" id="professionYearTo1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="professionPlace1" class="form-label">Место работы</label>
+                                        <input type="text" class="form-control" id="professionPlace1">
+                                    </div>
+                                </div>
+                                <span class="remove-item"><i class="bi bi-trash"></i></span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-outline-primary add-item-btn" id="addProfession">
+                            <i class="bi bi-plus-circle"></i> Добавить профессию
+                        </button>
+                        
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="tab-pane fade" id="residence" role="tabpanel">
+                    <form>
+                        <div id="residenceItems">
+                            <div class="residence-item">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="residencePlace1" class="form-label">Место жительства</label>
+                                        <input type="text" class="form-control" id="residencePlace1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="residenceYearFrom1" class="form-label">Год начала</label>
+                                        <input type="number" class="form-control" id="residenceYearFrom1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="residenceYearTo1" class="form-label">Год окончания</label>
+                                        <input type="number" class="form-control" id="residenceYearTo1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="residenceSource1" class="form-label">Как получены сведения</label>
+                                        <input type="text" class="form-control" id="residenceSource1" placeholder="Укажите источник информации">
+                                    </div>
+                                </div>
+                                <span class="remove-item"><i class="bi bi-trash"></i></span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-outline-primary add-item-btn" id="addResidence">
+                            <i class="bi bi-plus-circle"></i> Добавить место жительства
+                        </button>
+                        
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Family Tree</h5>
+                    <p>Сервис для создания и исследования генеалогических древ.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">О нас</a></li>
+                        <li><a href="#" class="text-white">Контакты</a></li>
+                        <li><a href="#" class="text-white">Помощь</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Соцсети</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3 pt-3 border-top border-secondary">
+                <p>© 2025 Family Tree. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/user-settings.js"></script>
+</body>
+</html>

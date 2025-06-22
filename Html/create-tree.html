@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать генеалогическое древо | Familio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1400/1400475.png" type="image/png">
+    <style>
+        .tree-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tree-node {
+            position: absolute;
+            width: 120px;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .tree-node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        
+        .tree-connector {
+            position: absolute;
+            background-color: #6c757d;
+            z-index: 1;
+        }
+        
+        .controls {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .node-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="main_page.html">Family Tree</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="drevo.html">Древо</a></li>
+                            <li class="nav-item"><a class="nav-link" href="surname.html">Фамилии</a></li>
+                            <li class="nav-item"><a class="nav-link" href="location.html">Места</a></li>
+                            <li class="nav-item"><a class="nav-link" href="people.html">Люди</a></li>
+                            <li class="nav-item"><a class="nav-link" href="database.html">База знаний</a></li>
+                        </ul>
+                <a href="#" class="btn btn-outline-primary"><i class="bi bi-box-arrow-in-right"></i> Вход</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-9">
+                <h1 class="mb-4"><i class="bi bi-diagram-3"></i> Создание генеалогического древа</h1>
+                <div class="tree-container" id="treeCanvas">
+                    <!-- Древо будет создано здесь через JavaScript -->
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="controls">
+                    <h4>Управление</h4>
+                    <button class="btn btn-primary w-100 mb-3" id="addRoot">Добавить себя</button>
+                    <button class="btn btn-outline-primary w-100 mb-3" id="addParent">Добавить родителя</button>
+                    <button class="btn btn-outline-primary w-100 mb-3" id="addSpouse">Добавить супруга</button>
+                    <button class="btn btn-outline-primary w-100 mb-3" id="addChild">Добавить ребенка</button>
+                    <hr>
+                    <button class="btn btn-success w-100 mb-3" id="saveTree">Сохранить древо</button>
+                    <button class="btn btn-outline-secondary w-100" id="resetTree">Очистить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Форма добавления/редактирования узла -->
+    <!-- В разделе формы добавления узла замените на это -->
+    <div class="node-form" id="nodeForm">
+        <div>
+            <h4 id="formTitle">Добавить члена семьи</h4>
+            <form id="nodeFormElement">
+                <input type="hidden" id="nodeId">
+                <input type="hidden" id="nodeType">
+                <!-- Основная информация -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Фамилия*</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Фамилия до замужества</label>
+                        <input type="text" class="form-control" id="maidenName">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Имя*</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Отчество</label>
+                        <input type="text" class="form-control" id="middleName">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Фото (URL)</label>
+                        <input type="url" class="form-control" id="photoUrl" value="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Национальность</label>
+                        <input type="text" class="form-control" id="nationality">
+                    </div>
+                </div>
+                
+                <!-- Даты рождения/смерти -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Дата рождения*</label>
+                        <input type="date" class="form-control" id="birthDate">
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-check mt-4 pt-3">
+                            <input class="form-check-input" type="checkbox" id="isBirthDateApprox">
+                            <label class="form-check-label">Приблизительная</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Дата смерти</label>
+                        <input type="date" class="form-control" id="deathDate">
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-check mt-4 pt-3">
+                            <input class="form-check-input" type="checkbox" id="isDeathDateApprox">
+                            <label class="form-check-label">Приблизительная</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Места рождения/смерти -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Место рождения</label>
+                        <div class="row g-2">
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Страна" id="birthCountry"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Город" id="birthCity"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Улица" id="birthStreet"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" placeholder="Дом" id="birthHouse"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" placeholder="Квартира" id="birthApartment"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Место смерти</label>
+                        <div class="row g-2">
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Страна" id="deathCountry"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Город" id="deathCity"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Социальный статус и образование -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Социальный статус</label>
+                        <select class="form-select" id="socialStatus">
+                            <option value="">Не указано</option>
+                            <option value="noble">Дворянин</option>
+                            <option value="clergy">Духовенство</option>
+                            <option value="merchant">Купец</option>
+                            <option value="peasant">Крестьянин</option>
+                            <option value="worker">Рабочий</option>
+                            <option value="intelligentsia">Интеллигенция</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="form-label">Образование</label>
+                        <div id="educationContainer">
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control education-input" placeholder="Учебное заведение">
+                                <button class="btn btn-outline-danger" type="button" onclick="removeEducation(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addEducationField()">+ Добавить образование</button>
+                    </div>
+                </div>
+                
+                <!-- Профессии -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Профессии</label>
+                        <div id="professionContainer">
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control profession-input" placeholder="Профессия">
+                                <button class="btn btn-outline-danger" type="button" onclick="removeProfession(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProfessionField()">+ Добавить профессию</button>
+                    </div>
+                </div>
+                
+                <!-- Места жительства -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Места жительства</label>
+                        <div id="residenceContainer">
+                            <div class="residence-item mb-3 p-3 border rounded">
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Страна">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Город">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" placeholder="Улица">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" placeholder="Дом">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control" placeholder="С">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control" placeholder="По">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-outline-danger w-100" type="button" onclick="removeResidence(this)">Удалить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addResidenceField()">+ Добавить место жительства</button>
+                    </div>
+                </div>
+                
+                <!-- Дополнительная информация -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Источник сведений</label>
+                        <textarea class="form-control" id="sourceInfo" rows="2"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Комментарий</label>
+                        <textarea class="form-control" id="comment" rows="2"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Документы -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Приложенные документы</label>
+                        <div id="documentsContainer">
+                            <div class="input-group mb-2">
+                                <input type="file" class="form-control document-input">
+                                <button class="btn btn-outline-danger" type="button" onclick="removeDocument(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addDocumentField()">+ Добавить документ</button>
+                    </div>
+                </div>
+                
+                <!-- Кнопки формы -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" class="btn btn-secondary" id="cancelNode">Отмена</button>
+                    <div>
+                        <button type="button" class="btn btn-outline-danger me-2" id="deleteNode" style="display: none;">Удалить</button>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--чик пук пук -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Familio</h5>
+                    <p>Сервис для создания и исследования генеалогических древ.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">О нас</a></li>
+                        <li><a href="#" class="text-white">Тарифы</a></li>
+                        <li><a href="#" class="text-white">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Помощь</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">FAQ</a></li>
+                        <li><a href="#" class="text-white">Контакты</a></li>
+                        <li><a href="#" class="text-white">Поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Подписаться</h5>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <button class="btn btn-primary" type="button">OK</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary">
+                <p>Copyright© 2025 Family Tree</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Логика для создания древа
+            const treeCanvas = document.getElementById('treeCanvas');
+            const nodeForm = document.getElementById('nodeForm');
+            let activeNode = null;
+            let nodes = [];
+            
+            // Кнопки управления
+            document.getElementById('addRoot').addEventListener('click', function() {
+                showNodeForm('self');
+            });
+            
+            document.getElementById('addParent').addEventListener('click', function() {
+                if (!activeNode) {
+                    alert('Сначала выберите узел в дереве');
+                    return;
+                }
+                showNodeForm('parent');
+            });
+            
+            document.getElementById('addSpouse').addEventListener('click', function() {
+                if (!activeNode) {
+                    alert('Сначала выберите узел в дереве');
+                    return;
+                }
+                showNodeForm('spouse');
+            });
+            
+            document.getElementById('addChild').addEventListener('click', function() {
+                if (!activeNode) {
+                    alert('Сначала выберите узел в дереве');
+                    return;
+                }
+                showNodeForm('child');
+            });
+            
+            document.getElementById('cancelNode').addEventListener('click', function() {
+                nodeForm.style.display = 'none';
+            });
+            
+            document.getElementById('saveTree').addEventListener('click', function() {
+                alert('Древо сохранено!');
+                // Здесь будет логика сохранения
+            });
+            
+            document.getElementById('resetTree').addEventListener('click', function() {
+                if (confirm('Вы уверены, что хотите очистить древо?')) {
+                    treeCanvas.innerHTML = '';
+                    nodes = [];
+                }
+            });
+            
+            // Показ формы добавления узла
+            function showNodeForm(type) {
+                document.getElementById('nodeType').value = type;
+                nodeForm.style.display = 'block';
+            }
+            
+            // Обработка отправки формы
+            nodeForm.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                addNodeToTree();
+                nodeForm.style.display = 'none';
+            });
+            
+            // Добавление узла в древо
+            function addNodeToTree() {
+                const type = document.getElementById('nodeType').value;
+                const name = document.getElementById('nodeName').value;
+                
+                const node = document.createElement('div');
+                node.className = 'tree-node animate__animated animate__fadeIn';
+                node.innerHTML = `
+                    <div class="node-name fw-bold">${name}</div>
+                    <div class="node-dates small text-muted">${document.getElementById('nodeBirth').value || '?'}</div>
+                `;
+                
+                // Позиционирование узла в зависимости от типа
+                if (type === 'self' && nodes.length === 0) {
+                    node.style.left = '50%';
+                    node.style.top = '80%';
+                    node.style.transform = 'translateX(-50%)';
+                }
+                
+                treeCanvas.appendChild(node);
+                nodes.push(node);
+                
+                // Сброс формы
+                nodeForm.querySelector('form').reset();
+            }
+            
+            // Анимация при наведении на кнопки
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.classList.add('animate__animated', 'animate__pulse');
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.classList.remove('animate__animated', 'animate__pulse');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
